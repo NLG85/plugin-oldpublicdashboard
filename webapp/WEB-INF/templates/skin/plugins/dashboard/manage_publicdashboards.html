@@ -1,0 +1,43 @@
+<#include "publicdashboard_tabs.html" />
+<@tabs2 tab="publicdashboard" />
+
+<@row>
+	<@columns>
+		<@messages infos=infos />
+		<@tform action='jsp/site/Portal.jsp?page=publicdashboard'>
+			<@button type='submit' name='view_createPublicDashboard' class='pull-right' buttonIcon='plus' title='#i18n{dashboard.manage_publicdashboards.buttonAdd}' />
+		</@tform>
+
+    	<h4>#i18n{dashboard.manage_publicdashboards.title}</h4>
+        
+    	<@table>
+			<tr>
+				<input type="hidden" id="id" name="id"/>
+					<th>#i18n{dashboard.manage_publicdashboards.columnTypedashboard}</th>
+					<th>#i18n{dashboard.manage_publicdashboards.columnOrdre}</th>
+					<th>#i18n{dashboard.manage_publicdashboards.columnEmplacement}</th>
+					<th>#i18n{portal.util.labelActions}</th>
+        	</tr>
+				<#list publicdashboard_list as publicdashboard >
+        	<tr>
+				<input type="hidden" id="id" name="id" />
+            <td>
+					${publicdashboard.typedashboard}
+            </td>    
+            <td>
+					${publicdashboard.position}
+            </td>    
+            <td>
+					${publicdashboard.location}
+            </td>    
+			<td>
+				<@aButton href='jsp/site/Portal.jsp?page=publicdashboard&view=modifyPublicDashboard&id=${publicdashboard.id}' title='#i18n{portal.util.labelModify}' hideTitle=['all'] buttonIcon='pencil-square-o' />
+						
+				<@aButton href='jsp/site/Portal.jsp?page=publicdashboard&action=confirmRemovePublicDashboard&id=${publicdashboard.id}' title='#i18n{portal.util.labelDelete}' buttonIcon='trash' hideTitle=['all'] color='btn-danger' />
+			</td>
+        </tr>
+        </#list>
+    	</@table>
+	</@columns>
+</@row>
+

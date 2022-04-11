@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <properties>
+        <title>Plugin publicdashboard</title>
+    </properties>
+    <head>
+        <!-- Keywords example : "cms, authentication, cms, workflow, seo, collaborative, ..." 
+             Use the language of this xdoc -->
+        <meta name="keywords" content="user, dashboard" />
+    </head>
+    <body>
+        <section name="Plugin publicdashboard">
+            <!--
+            <p>
+                <img src="images/dashboard.png" />
+            </p>
+            -->
+            <subsection name="Introduction">
+                <p>this plugin allows to display public information as publicdasbhoard
+                about a user such as his comments, different counters on his activities 
+                or simply his name, avatar, etc.
+                </p>
+            </subsection>
+            <subsection name="Configuration">
+                <p>
+                A module must implement each publicdashboard you want to display.
+                In the properties file, dashboard.encrypt.userid is used to encrypt or not
+                the userid
+                In the backoffice, you can decide which publicdashboard you want to add.
+                </p>
+            </subsection>
+            <subsection name="Usage">
+                <p>
+                The publicdashboard page is accessible via the Portal in Front Office 
+                </p>
+            </subsection>
+        </section>
+    </body>
+</document>
+

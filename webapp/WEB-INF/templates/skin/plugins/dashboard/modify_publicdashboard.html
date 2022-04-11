@@ -1,0 +1,28 @@
+<#include "publicdashboard_tabs.html" />
+<@tabs2 tab="publicdashboard" />
+
+<@row>
+	<@columns>
+		<@tform class='form-horizontal' action='jsp/site/Portal.jsp?page=publicdashboard'>
+			<fieldset>
+				<legend>#i18n{dashboard.modify_publicdashboard.title}</legend>
+				<@messages errors=errors />
+				<input type="hidden" id="id" name="id" value="${publicdashboard.id}"/>
+				<input type="hidden" value="${token}" name="token" />
+
+				<@formGroup labelFor='typedashboard' labelKey='#i18n{dashboard.modify_publicdashboard.labelTypedashboard}' mandatory=true>
+          			<@input type='text' id='typedashboard' name='typedashboard'  maxlength=255 value='${publicdashboard.typedashboard!\'\'}' tabIndex='0' />
+				</@formGroup>
+				<@formGroup labelFor='emplacement' labelKey='#i18n{dashboard.modify_publicdashboard.labelEmplacement}' mandatory=true>
+          			<@input type="text" id="location" name="location" value="${publicdashboard.location!''}"  tabIndex="3" />
+				</@formGroup>
+
+				<@formGroup>
+         			<@button name='action_modifyPublicDashboard' type='submit' tabIndex='3' title='#i18n{portal.util.labelModify}' buttonIcon='plus' />
+          			<@button name='view_managePublicDashboards' type='submit' title='#i18n{portal.util.labelCancel}' buttonIcon='close' color='btn-secondary' />
+				</@formGroup>
+        	</fieldset>
+		</@tform>
+	</@columns>
+</@row>
+

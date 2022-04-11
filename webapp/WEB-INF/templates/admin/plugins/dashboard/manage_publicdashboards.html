@@ -1,0 +1,61 @@
+<#include "publicdashboard_tabs.html" />
+<@tabs2 tab="publicdashboard" />
+
+<@box>
+	<@boxHeader title='#i18n{dashboard.manage_publicdashboard.title}' boxTools=true>
+		<@tform class='form-inline pull-right' name='manage_publicdashboard' action='jsp/admin/plugins/dashboard/ManagePublicDashboards.jsp'>
+			<@button type='submit' name='view_createPublicDashboard' buttonIcon='plus' title='#i18n{dashboard.manage_publicdashboards.buttonAdd}' />
+		</@tform>
+	</@boxHeader>
+	<@boxBody>    
+    <@messages infos=infos />
+    <@paginationAdmin paginator=paginator combo=1 />
+    <div class="clearfix"></div>
+    <@table>
+        <tr>
+            <input type="hidden" id="id" name="id"/>
+            <th>#i18n{dashboard.manage_publicdashboards.columnTypedashboard}</th>
+            <th>#i18n{dashboard.manage_publicdashboards.columnOrdre}</th>
+            <th>#i18n{dashboard.manage_publicdashboards.columnEmplacement}</th>
+            <th>#i18n{portal.util.labelActions}</th>
+        </tr>
+        <@tableHeadBodySeparator />
+        <#list publicdashboard_list as publicdashboard >
+        <tr>
+            <input type="hidden" id="id" name="id"/>
+            <td>
+				${publicdashboard.typedashboard}
+			</td>
+            <td>
+				${publicdashboard.position}
+			</td>
+            <td>
+				${publicdashboard.location}
+			</td>
+        	<td>
+				<@aButton href='jsp/admin/plugins/dashboard/ManagePublicDashboards.jsp?view=modifyPublicDashboard&id=${publicdashboard.id}' title='#i18n{portal.util.labelModify}' hideTitle=['all'] buttonIcon='pencil' />
+						
+				<@aButton href='jsp/admin/plugins/dashboard/ManagePublicDashboards.jsp?action=confirmRemovePublicDashboard&id=${publicdashboard.id}' title='#i18n{portal.util.labelDelete}' buttonIcon='trash' hideTitle=['all'] color='btn-danger'  />
+				
+				<#if publicdashboard_index!=0>
+                   <a href="jsp/admin/plugins/dashboard/ManagePublicDashboards.jsp?action=moveUpDashboard&id=${publicdashboard.id}"
+                       class="btn btn-primary btn-sm" title="#i18n{dashboard.manage_publicdashboards.labelUp}" >
+                         <i class="fa fa-arrow-up">&nbsp;</i>
+                   </a>
+                </#if>
+                <#if publicdashboard_has_next>
+                  <a href="jsp/admin/plugins/dashboard/ManagePublicDashboards.jsp?action=moveDownDashboard&id=${publicdashboard.id}"
+                       class="btn btn-primary btn-sm" title="#i18n{dashboard.manage_publicdashboards.labelDown}" >
+                         <i class="fa fa-arrow-down">&nbsp;</i>
+                   </a>
+                </#if>
+				
+	        </td>
+        </tr>
+        </#list>
+    </@table>
+
+    <@paginationAdmin paginator=paginator />
+
+  </@boxBody>
+</@box>

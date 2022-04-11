@@ -1,0 +1,21 @@
+<#include "publicdashboard_tabs.html" />
+<@tabs2 tab="publicdashboard" />
+
+<@box>
+	<@boxHeader title='#i18n{dashboard.modify_publicdashboard.title}' />
+	<@boxBody>
+    <@tform class="form-horizontal" method="post" name="modify_publicdashboard" action="jsp/admin/plugins/dashboard/ManagePublicDashboards.jsp">
+			<@messages errors=errors />
+			<input type="hidden" id="id" name="id" value="${publicdashboard.id}"/>
+			<input type="hidden" value="${token}" name="token" />
+			
+			<@formGroup labelFor='typedashboard' labelKey='#i18n{dashboard.modify_publicdashboard.labelTypedashboard}' mandatory=true>
+          		<@select name='typedashboard' items=listtypedashboard id='typedashboard' default_value='${publicdashboard.typedashboard!\'\'}' />
+			</@formGroup>
+			<@formGroup labelFor='emplacement' labelKey='#i18n{dashboard.modify_publicdashboard.labelEmplacement}' mandatory=true>
+          		<@select name='location' items=listlocationdashboard id='location' default_value='${publicdashboard.location!\'\'}' />
+			</@formGroup>
+        <@actionButtons button1Name="action_modifyPublicDashboard" button2Name="view_managePublicDashboard"/>
+    </@tform>
+	</@boxBody>
+</@box>
